@@ -2,8 +2,25 @@
 const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
+const modal = document.getElementById('modal')
 // Your JavaScript code goes here!
+const likes = document.getElementsByClassName('like')
+const errorMessage = document.getElementById('modal-message');
+[...likes].forEach(element => {
+  
 
+element.addEventListener('click', (event)=> mimicServerCall().then(()=>{
+element.classList.toggle('activated-heart')
+}).catch((error)=> {
+  modal.classList.toggle('hidden')
+  errorMessage.innerText = error
+  setTimeout(()=>{
+    modal.classList.toggle('hidden')
+
+  }, 3000)
+})
+)
+});
 
 
 
